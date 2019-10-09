@@ -26,6 +26,8 @@ MINIMUM_AMOUNT = 1
 
    def touch_in(station)
      fail "insufficient balance" if @balance < MINIMUM_AMOUNT
+     fail "failed to touch out" if @entry_station == true
+
      @entry_station = station
    end
 

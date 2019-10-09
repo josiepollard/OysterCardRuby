@@ -71,5 +71,16 @@ describe Oystercard do
   expect(subject.journeys).to include journey
 end
 
+  it 'fail to touch in' do
+    subject.top_up(2)
+    expect{ subject.touch_out(exit_station) }.to raise_error 'failed to touch in'
   end
-end
+
+  it 'fail to touch out' do
+    subject.top_up(2)
+    subject.touch_in(entry_station)
+    expect{ subject.touch_in(entry_station)}.to raise_error 'failed to touch out'
+  end
+  end
+
+  end
